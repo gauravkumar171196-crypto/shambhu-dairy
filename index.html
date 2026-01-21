@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shambhu Singh Dairy Farm</title>
+    <style>
+        :root { --primary: #2e7d32; --whatsapp: #25D366; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; }
+        .navbar { background: var(--primary); color: white; padding: 15px; text-align: center; }
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .card img { width: 80px; }
+        .price { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin: 10px 0; }
+        .wa-btn { display: inline-block; background: var(--whatsapp); color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        .contact-section { background: white; padding: 25px; border-radius: 12px; margin-top: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .submit-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; }
+        .footer { text-align: center; margin-top: 40px; padding: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Shambhu Singh Dairy Farm 🐄</h1>
+    <p>ताज़ा दूध, सीधा आपके घर</p>
+</div>
+
+<div class="container">
+    <div class="product-grid">
+        <div class="card">
+            <img src="https://img.icons8.com/office/80/milk-bottle.png">
+            <h3>शुद्ध गाय का दूध</h3>
+            <p class="price">₹60/Ltr</p>
+            <a href="https://wa.me/919682386150?text=नमस्ते, मुझे दूध आर्डर करना है" class="wa-btn">WhatsApp Order</a>
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/external-flat-juicy-fish/80/external-butter-dairy-flat-flat-juicy-fish.png">
+            <h3>शुद्ध देशी घी</h3>
+            <p class="price">₹450/500g</p>
+            <a href="https://wa.me/919682386150?text=नमस्ते, मुझे घी आर्डर करना है" class="wa-btn">WhatsApp Order</a>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <h3>संपर्क करें (Contact Us)</h3>
+        <input type="text" placeholder="आपका नाम">
+        <input type="tel" placeholder="मोबाइल नंबर">
+        <textarea rows="4" placeholder="आपका संदेश"></textarea>
+        <button class="submit-btn" onclick="alert('आपका संदेश प्राप्त हुआ!')">संदेश भेजें</button>
+    </div>
+
+    <div class="footer">
+        <a href="login.html" style="color: #888; text-decoration: none;">Owner Login</a>
+    </div>
+</div>
+
+</body>
+</html>

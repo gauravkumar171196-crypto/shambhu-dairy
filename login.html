@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SHAMBHU SINGH DAIRY FARM</title>
+    <style>
+        * { margin: 0; padding: 0; box-shadow: border-box; }
+        
+        body {
+            /* नीचे दिए गए URL में आप अपनी पसंद की कोई भी बैकग्राउंड इमेज लगा सकते हैं */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.15); /* कांच जैसा इफ़ेक्ट (Glassmorphism) */
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            width: 380px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .logo-area img {
+            width: 80px;
+            margin-bottom: 10px;
+            filter: drop-shadow(2px 4px 6px black);
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        p.subtitle {
+            font-size: 14px;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #d4ff00; /* इमेज वाला नियॉन हरा रंग */
+            color: #1b5e20;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background: white;
+            transform: scale(1.02);
+        }
+
+        .links {
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        .links a {
+            color: #d4ff00;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <div class="logo-area">
+        <img src="https://img.icons8.com/color/96/cow.png" alt="Dairy Logo">
+        <h1>SHAMBHU SINGH DAIRY FARM</h1>
+        <p class="subtitle">ताज़गी जो सीधे खेत से आए</p>
+    </div>
+
+    <form id="loginForm">
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" id="user" placeholder="अपनी ID यहाँ लिखें" required>
+        </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="pass" placeholder="पासवर्ड यहाँ लिखें" required>
+        </div>
+        <button type="submit" class="login-btn">Sign in</button>
+    </form>
+
+    <div class="links">
+        <a href="#">Forgot Password?</a> | <a href="index.html">Back to Home</a>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').onsubmit = function(e) {
+        e.preventDefault();
+        var u = document.getElementById('user').value;
+        var p = document.getElementById('pass').value;
+
+        // यहाँ आप अपना यूजरनेम और पासवर्ड बदल सकते हैं
+        if(u === "admin" && p === "1234") {
+            alert("स्वागत है, शंभू सिंह जी!");
+            window.location.href = "index.html"; 
+        } else {
+            alert("गलत जानकारी! कृपया फिर से जाँचें।");
+        }
+    };
+</script>
+
+</body>
+</html>
