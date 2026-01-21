@@ -3,59 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shambhu Singh Dairy Farm</title>
+    <title>Management - Shambhu Singh Dairy Farm</title>
     <style>
-        :root { --primary: #2e7d32; --whatsapp: #25D366; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; }
-        .navbar { background: var(--primary); color: white; padding: 15px; text-align: center; }
-        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .card img { width: 80px; }
-        .price { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin: 10px 0; }
-        .wa-btn { display: inline-block; background: var(--whatsapp); color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; }
-        .contact-section { background: white; padding: 25px; border-radius: 12px; margin-top: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .submit-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; }
-        .footer { text-align: center; margin-top: 40px; padding: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
+        .header { background-color: #1b5e20; color: white; padding: 25px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        
+        /* Navigation Tabs */
+        .tab-bar { display: flex; overflow-x: auto; background: white; sticky: top; box-shadow: 0 2px 10px rgba(0,0,0,0.1); justify-content: center; }
+        .tab-link { padding: 15px 25px; border: none; background: none; cursor: pointer; font-weight: bold; font-size: 16px; color: #666; white-space: nowrap; transition: 0.3s; }
+        .tab-link.active { color: #1b5e20; border-bottom: 4px solid #1b5e20; }
+
+        .container { max-width: 1100px; margin: 20px auto; padding: 15px; }
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeIn 0.5s; }
+
+        /* Management Card Styles */
+        .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 10px solid #1b5e20; }
+        .animal-title { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e8f5e9; padding-bottom: 10px; margin-bottom: 15px; }
+        .breed-badge { background: #e8f5e9; color: #2e7d32; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: bold; }
+
+        /* Table Styles */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #f0f0f0; }
+        th { color: #888; font-size: 13px; text-transform: uppercase; }
+        .total-row { background: #f1f8e9; font-weight: bold; color: #1b5e20; }
+
+        /* Shop Grid Styles */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .product-card { background: white; border-radius: 15px; padding: 20px; text-align: center; border: 1px solid #eee; transition: 0.3s; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .product-card h3 { color: #1b5e20; margin-bottom: 5px; }
+        .price { font-size: 24px; color: #2e7d32; font-weight: bold; margin: 15px 0; }
+        .whatsapp-btn { background: #25d366; color: white; padding: 12px 25px; border: none; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 14px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-<div class="navbar">
+<div class="header">
     <h1>Shambhu Singh Dairy Farm 🐄</h1>
-    <p>ताज़ा दूध, सीधा आपके घर</p>
+    <p>शुद्ध गाय और भैंस का उत्पाद, सीधे आपके द्वार</p>
+</div>
+
+<div class="tab-bar">
+    <button class="tab-link active" onclick="openTab(event, 'cows')">🐄 गाय (Cows)</button>
+    <button class="tab-link" onclick="openTab(event, 'buffalos')">🐃 भैंस (Buffalos)</button>
+    <button class="tab-link" onclick="openTab(event, 'shop')">🛒 ऑनलाइन दुकान</button>
 </div>
 
 <div class="container">
-    <div class="product-grid">
+
+    <div id="cows" class="content-section active">
+        <h2>गाय का स्टॉक और रिकॉर्ड</h2>
         <div class="card">
-            <img src="https://img.icons8.com/office/80/milk-bottle.png">
-            <h3>शुद्ध गाय का दूध</h3>
-            <p class="price">₹60/Ltr</p>
-            <a href="https://wa.me/919682386150?text=नमस्ते, मुझे दूध आर्डर करना है" class="wa-btn">WhatsApp Order</a>
-        </div>
-        <div class="card">
-            <img src="https://img.icons8.com/external-flat-juicy-fish/80/external-butter-dairy-flat-flat-juicy-fish.png">
-            <h3>शुद्ध देशी घी</h3>
-            <p class="price">₹450/500g</p>
-            <a href="https://wa.me/919682386150?text=नमस्ते, मुझे घी आर्डर करना है" class="wa-btn">WhatsApp Order</a>
+            <div class="animal-title">
+                <div><h2 style="margin:0;">गौरी</h2><p style="margin:0; font-size:12px; color:#888;">ID: C-101</p></div>
+                <span class="breed-badge">नस्ल: गिर (Gir)</span>
+            </div>
+            <table>
+                <tr><th>तारीख</th><th>सुबह (L)</th><th>शाम (L)</th><th>कुल</th></tr>
+                <tr><td>21 Jan 2026</td><td>8.0</td><td>7.5</td><td>15.5</td></tr>
+            </table>
         </div>
     </div>
 
-    <div class="contact-section">
-        <h3>संपर्क करें (Contact Us)</h3>
-        <input type="text" placeholder="आपका नाम">
-        <input type="tel" placeholder="मोबाइल नंबर">
-        <textarea rows="4" placeholder="आपका संदेश"></textarea>
-        <button class="submit-btn" onclick="alert('आपका संदेश प्राप्त हुआ!')">संदेश भेजें</button>
+    <div id="buffalos" class="content-section">
+        <h2>भैंस का स्टॉक और रिकॉर्ड</h2>
+        <div class="card">
+            <div class="animal-title">
+                <div><h2 style="margin:0;">काली</h2><p style="margin:0; font-size:12px; color:#888;">ID: B-201</p></div>
+                <span class="breed-badge">नस्ल: मुर्रा (Murrah)</span>
+            </div>
+            <table>
+                <tr><th>तारीख</th><th>सुबह (L)</th><th>शाम (L)</th><th>कुल</th></tr>
+                <tr><td>21 Jan 2026</td><td>10.5</td><td>9.0</td><td>19.5</td></tr>
+            </table>
+        </div>
     </div>
 
-    <div class="footer">
-        <a href="login.html" style="color: #888; text-decoration: none;">Owner Login</a>
+    <div id="shop" class="content-section">
+        <h2 style="text-align: center;">ताज़ा डेयरी उत्पाद</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3>गाय का दूध</h3>
+                <p class="breed-badge">शुद्ध और ताज़ा</p>
+                <p class="price">₹60 / Ltr</p>
+                <a href="https://wa.me/91XXXXXXXXXX?text=मुझे गाय का दूध चाहिए" class="whatsapp-btn">WhatsApp Order</a>
+            </div>
+            <div class="product-card">
+                <h3>भैंस का दूध</h3>
+                <p class="breed-badge">गाढ़ा और पौष्टिक</p>
+                <p class="price">₹80 / Ltr</p>
+                <a href="https://wa.me/91XXXXXXXXXX?text=मुझे भैंस का दूध चाहिए" class="whatsapp-btn">WhatsApp Order</a>
+            </div>
+            
+            <div class="product-card">
+                <h3>गाय का पनीर</h3>
+                <p class="breed-badge">सॉफ्ट और ताज़ा</p>
+                <p class="price">₹400 / KG</p>
+                <a href="#" class="whatsapp-btn">WhatsApp Order</a>
+            </div>
+            <div class="product-card">
+                <h3>भैंस का पनीर</h3>
+                <p class="breed-badge">स्पेशल क्वालिटी</p>
+                <p class="price">₹450 / KG</p>
+                <a href="#" class="whatsapp-btn">WhatsApp Order</a>
+            </div>
+
+            <div class="product-card">
+                <h3>मीठा दही (मटका)</h3>
+                <p class="breed-badge">घर जैसा स्वाद</p>
+                <p class="price">₹50 / 500g</p>
+                <a href="#" class="whatsapp-btn">WhatsApp Order</a>
+            </div>
+
+            <div class="product-card">
+                <h3>शुद्ध देसी घी</h3>
+                <p class="breed-badge">दानेदार और खुशबूदार</p>
+                <p class="price">₹650 / 500g</p>
+                <a href="#" class="whatsapp-btn">WhatsApp Order</a>
+            </div>
+
+            <div class="product-card">
+                <h3>जैविक खाद (गोबर)</h3>
+                <p class="breed-badge">खेतों के लिए सर्वोत्तम</p>
+                <p class="price">₹2000 / ट्रॉली</p>
+                <a href="#" class="whatsapp-btn">WhatsApp Order</a>
+            </div>
+        </div>
     </div>
+
 </div>
 
-</body>
+<script>
+    function openTab(evt, tabName) {
+        var i, content, links;
+        content = document.getElementsByClassName("content-section");
+        for (i = 0; i < content.length; i++) {
+            content[i].style.display = "none";
+            content[i].classList.remove("active");
+        }
+        links = document.getElementsByClassName("tab-link");
+        for (i = 0; i < links.length; i++) {
+            links[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
 
+</body>
 </html>
