@@ -3,143 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shambhu Singh Dairy Farm - Premium Edition</title>
+    <title>Shambhu Singh Dairy Farm - Final Pro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary-dark: #0a2e0c; --gold: #d4af37; --accent: #25d366; --bg: #fdfdfd; }
-        
-        body { 
-            font-family: 'Poppins', sans-serif; margin: 0; 
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200');
-            background-attachment: fixed; background-size: cover; color: #333; 
-        }
+        :root { --primary-dark: #0a2e0c; --gold: #d4af37; --accent: #25d366; --bg-creamy: #fdfaf1; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--bg-creamy); color: #333; }
 
-        /* 1. आपका नया "Cinematic Header Card" */
+        /* विशाल हेडर */
         .header-card { 
             background: linear-gradient(135deg, #0a2e0c 0%, #1b5e20 100%); 
-            color: white; padding: 40px 20px; text-align: center; 
-            border-radius: 0 0 50px 50px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3); 
-            border-bottom: 5px solid var(--gold); /* नीचे सुनहरी पट्टी */
-            position: relative; overflow: hidden;
+            color: white; padding: 50px 20px; text-align: center; 
+            border-radius: 0 0 60px 60px; box-shadow: 0 20px 45px rgba(0,0,0,0.4); 
+            border-bottom: 6px solid var(--gold); display: flex; align-items: center; justify-content: space-around;
         }
-        .header-card h1 { 
-            font-family: 'Playfair Display', serif; 
-            margin: 0; font-size: 2.8rem; 
-            color: var(--gold); /* नाम अब सुनहरी रंग में चमकेगा */
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5); 
+        .header-card img { 
+            width: 160px; height: 160px; border-radius: 50%; 
+            border: 5px solid var(--gold); object-fit: cover; /* प्रोफाइल फोटो ऑटो-फिट */
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
         }
-        .header-card p { margin: 10px 0 0; font-size: 1.1rem; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; color: #fff; }
+        .header-title h1 { 
+            font-family: 'Playfair Display', serif; margin: 0; 
+            font-size: 4rem; color: var(--gold); text-shadow: 4px 4px 15px rgba(0,0,0,0.7);
+        }
 
-        .top-nav { display: flex; justify-content: center; background: white; padding: 15px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.05); gap: 25px; }
-        .nav-item { border: none; background: none; font-weight: 700; color: #444; cursor: pointer; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        /* नेविगेशन */
+        .top-nav { display: flex; justify-content: center; background: white; padding: 15px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.1); gap: 15px; flex-wrap: wrap; }
+        .nav-item { border: none; background: none; font-weight: 700; color: #444; cursor: pointer; font-size: 1rem; border-bottom: 3px solid transparent; padding: 5px 12px; }
         .nav-item.active { color: var(--primary-dark); border-bottom: 3px solid var(--gold); }
 
-        .container { max-width: 1250px; margin: 25px auto; padding: 20px; background: rgba(255, 255, 255, 0.9); border-radius: 30px; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .section-title { font-size: 1.5rem; color: var(--primary-dark); margin: 10px 0 30px; font-weight: 700; text-align: center; position: relative; }
-        .section-title::after { content: ''; display: block; width: 80px; height: 4px; background: var(--gold); margin: 10px auto; border-radius: 2px; }
+        .container { max-width: 1300px; margin: 30px auto; padding: 30px; background: #fffef9; border-radius: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); border: 1px solid #f2e8cf; }
+        .data-section { display: none; }
+        .data-section.active { display: block; }
 
-        /* 2. एक लाइन में 3 प्रोडक्ट्स (आपका पसंदीदा लेआउट) */
-        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .p-card { background: white; border-radius: 25px; padding: 15px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.05); transition: 0.4s; border: 1px solid #f0f0f0; }
-        .p-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-        .p-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 20px; margin-bottom: 12px; }
-        .p-card h3 { font-size: 1rem; margin: 5px 0; font-weight: 700; color: #111; }
-        .price { font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 15px; }
-        .wa-btn { background: var(--accent); color: white; text-decoration: none; padding: 8px 18px; border-radius: 12px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
-
-        /* 3. सिनेमैटिक स्लाइडर */
-        .slider-box { width: 100%; height: 350px; margin: 40px 0; border-radius: 30px; overflow: hidden; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+        /* स्लाइडर - ऑटो फिट सेटिंग */
+        .slider-box { width: 100%; height: 500px; border-radius: 50px; overflow: hidden; position: relative; border: 5px solid var(--gold); }
         .slides { display: none; width: 100%; height: 100%; animation: zoomFade 1.5s; }
-        .slides img { width: 100%; height: 100%; object-fit: cover; }
-        .slide-cap { position: absolute; bottom: 25px; left: 25px; background: rgba(10, 46, 12, 0.8); color: var(--gold); padding: 10px 20px; border-radius: 12px; font-weight: bold; }
+        .slides img { width: 100%; height: 100%; object-fit: cover; } /* स्लाइडर फोटो को खींचने से बचाएगा */
 
-        .footer { background: white; margin-top: 40px; padding: 35px; text-align: center; border-radius: 45px 45px 0 0; border-top: 5px solid var(--gold); }
-        .social-icons a { font-size: 2.2rem; margin: 0 15px; transition: 0.3s; display: inline-block; }
-        .social-icons a:hover { transform: scale(1.2) translateY(-5px); }
+        /* उत्पाद ग्रिड - ऑटो फिट कार्ड्स */
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .p-card { background: white; border-radius: 35px; padding: 20px; text-align: center; border: 1px solid #eee; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .p-card img { 
+            width: 100%; height: 220px; 
+            object-fit: cover; /* फोटो कैसी भी हो, फ्रेम में फिट हो जाएगी */
+            border-radius: 25px; margin-bottom: 15px; 
+        }
+        .wa-btn { background: var(--accent); color: white; text-decoration: none; padding: 12px 25px; border-radius: 15px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; }
 
-        @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .header-card h1 { font-size: 2rem; } }
-        @keyframes zoomFade { from {transform: scale(1.1); opacity: 0.5} to {transform: scale(1); opacity: 1} }
+        /* रिकॉर्ड टेबल्स और एडिटिंग */
+        .edit-btn { background: #ff9800; color: white; border: none; padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: bold; margin-bottom: 15px; }
+        .editing-active td { background: #fffde7; border: 1px dashed var(--gold); }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; border-radius: 20px; overflow: hidden; }
+        th, td { padding: 20px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: var(--primary-dark); color: var(--gold); }
+
+        /* फुटर और सोशल आइकन */
+        .footer { background: white; padding: 50px; text-align: center; border-radius: 60px 60px 0 0; border-top: 8px solid var(--gold); margin-top: 50px; }
+        .social-icons a { font-size: 2.5rem; margin: 0 18px; display: inline-block; }
+
+        @keyframes zoomFade { from {transform: scale(1.1); opacity: 0.6} to {transform: scale(1); opacity: 1} }
+        @media (max-width: 1000px) { .header-title h1 { font-size: 2.5rem; } .product-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
-<body>
+<body onclick="playCowSound()">
 
-<div class="header-card">
-    <h1>Shambhu Singh Dairy Farm 🐄</h1>
-    <p>शुद्धता और ताज़गी का संगम ✨</p>
-</div>
+    <audio id="cowMoo"><source src="https://assets.mixkit.co/active_storage/sfx/2283/2283-preview.mp3" type="audio/mpeg"></audio>
 
-<div class="top-nav">
-    <button class="nav-item active" onclick="switchTab(event, 'home')"><i class="fas fa-store"></i> मुख्य शॉप</button>
-    <button class="nav-item" onclick="switchTab(event, 'cow-data')"><i class="fas fa-cow"></i> गाय रिकॉर्ड</button>
-    <button class="nav-item" onclick="switchTab(event, 'buffalo-data')"><i class="fas fa-hippo"></i> भैंस रिकॉर्ड</button>
-</div>
+    <div class="header-card">
+        <img src="shambhu.jpg" alt="Owner">
+        <div class="header-title">
+            <h1>Shambhu Singh Dairy Farm</h1>
+            <p style="color:#fff; letter-spacing:4px; font-weight:600;">शुद्धता और ताज़गी का संगम ✨</p>
+        </div>
+        <img src="shambhu.jpg" alt="Owner">
+    </div>
 
-<div class="container">
-    <div id="home" class="data-content">
-        <h2 class="section-title">आज के ताज़ा और शुद्ध उत्पाद</h2>
-        <div class="product-grid">
-            <div class="p-card">
-                <img src="https://cdn.pixabay.com/photo/2017/07/05/15/41/milk-2474993_1280.jpg">
-                <h3>शुद्ध गाय का दूध</h3><p class="price">₹60/L</p>
-                <a href="https://wa.me/919682386150" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर करें</a>
-            </div>
-            <div class="p-card">
-                <img src="https://cdn.pixabay.com/photo/2016/12/06/18/27/milk-1887234_1280.jpg">
-                <h3>भैंस का गाढ़ा दूध</h3><p class="price">₹80/L</p>
-                <a href="https://wa.me/919682386150" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर करें</a>
-            </div>
-            <div class="p-card">
-                <img src="https://cdn.pixabay.com/photo/2018/06/10/17/41/ghee-3466906_1280.jpg">
-                <h3>शुद्ध देसी घी</h3><p class="price">₹650/500g</p>
-                <a href="https://wa.me/919682386150" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर करें</a>
-            </div>
-            <div class="p-card">
-                <img src="https://cdn.pixabay.com/photo/2017/01/11/11/33/cake-1971552_1280.jpg">
-                <h3>ताज़ा मलाई पनीर</h3><p class="price">₹400/KG</p>
-                <a href="https://wa.me/919682386150" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर करें</a>
-            </div>
-            <div class="p-card">
-                <img src="https://cdn.pixabay.com/photo/2016/03/23/15/00/yogurt-1274945_1280.jpg">
-                <h3>ताज़ा मीठा दही</h3><p class="price">₹50/500g</p>
-                <a href="https://wa.me/919682386150" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर करें</a>
-            </div>
-            <div class="p-card">
-                <img src="https://cdn.pixabay.com/photo/2017/07/19/08/50/manure-2518332_1280.jpg">
-                <h3>जैविक गोबर खाद</h3><p class="price">₹2000/ट्रॉली</p>
-                <a href="https://wa.me/919682386150" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर करें</a>
+    <nav class="top-nav">
+        <button class="nav-item active" onclick="switchTab(event, 'home-main')">🏠 मुख्य पेज</button>
+        <button class="nav-item" onclick="switchTab(event, 'products-section')">🥛 ताज़ा उत्पाद</button>
+        <button class="nav-item" onclick="switchTab(event, 'cow-records')">🐄 गाय रिकॉर्ड</button>
+        <button class="nav-item" onclick="switchTab(event, 'buffalo-records')">🐃 भैंस रिकॉर्ड</button>
+        <button class="nav-item" onclick="switchTab(event, 'feed-charts')">🌾 चारा रिकॉर्ड</button>
+    </nav>
+
+    <div class="container">
+        <div id="home-main" class="data-section active">
+            <h2 style="text-align:center;">डेयरी फार्म की झलक</h2>
+            <div class="slider-box">
+                <div class="slides" style="display:block;"><img src="slide1.jpg"></div>
+                <div class="slides"><img src="slide2.jpg"></div>
+		<div class="slides"><img src="slide3.jpg"></div>
+		<div class="slides"><img src="slide4.jpg"></div>
+		<div class="slides"><img src="slide5.jpg"></div>
+		<div class="slides"><img src="slide6.jpg"></div>
+                <div class="slides"><img src="slide7.jpg"></div>
             </div>
         </div>
 
-        <div class="slider-box">
-            <div class="slides"><img src="https://images.unsplash.com/photo-1549445250-9d066917637e?w=1200"><div class="slide-cap">हमारी शाही गिर गायें 🐄</div></div>
-            <div class="slides"><img src="https://images.unsplash.com/photo-1629864276707-1605336d394a?w=1200"><div class="slide-cap">मुर्रा भैंसों का रिकॉर्ड 🐃</div></div>
+        <div id="products-section" class="data-section">
+            <h2 style="text-align:center;">हमारे शुद्ध उत्पाद</h2>
+            <div class="product-grid">
+                <div class="p-card"><img src="cow_milk.jpg"><h3>गाय का दूध</h3><p>₹60/L</p><a href="javascript:void(0)" onclick="sendOrder('गाय का दूध')" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर</a></div>
+                <div class="p-card"><img src="buffalo_milk.jpg"><h3>भैंस का दूध</h3><p>₹80/L</p><a href="javascript:void(0)" onclick="sendOrder('भैंस का दूध')" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर</a></div>
+                <div class="p-card"><img src="ghee.jpg"><h3>शुद्ध देसी घी</h3><p>₹650/L</p><a href="javascript:void(0)" onclick="sendOrder('घी')" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर</a></div>
+                <div class="p-card"><img src="paneer.jpg"><h3>ताज़ा पनीर</h3><p>₹400/kg</p><a href="javascript:void(0)" onclick="sendOrder('पनीर')" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर</a></div>
+                <div class="p-card"><img src="curd.jpg"><h3>ताज़ा दही</h3><p>₹50/kg</p><a href="javascript:void(0)" onclick="sendOrder('दही')" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर</a></div>
+                <div class="p-card"><img src="khad.jpg"><h3>जैविक खाद</h3><p>₹2000</p><a href="javascript:void(0)" onclick="sendOrder('खाद')" class="wa-btn"><i class="fab fa-whatsapp"></i> ऑर्डर</a></div>
+            </div>
+        </div>
+
+        <div id="cow-records" class="data-section">
+            <h2 style="text-align:center;">🐄 गाय रिकॉर्ड</h2>
+            <button class="edit-btn" onclick="toggleEdit('cow-table')">📝 Edit Records</button>
+            <table id="cow-table">
+                <thead><tr><th>नाम</th><th>नस्ल</th><th>दूध (Daily)</th><th>ब्यात</th></tr></thead>
+                <tbody>
+                    <tr><td>गंगा</td><td>शाहीवाल</td><td>12L</td><td>दूसरी</td></tr>
+                    <tr><td>लक्ष्मी</td><td>गिर</td><td>15L</td><td>तीसरी</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="buffalo-records" class="data-section">
+            <h2 style="text-align:center;">🐃 भैंस रिकॉर्ड</h2>
+            <button class="edit-btn" onclick="toggleEdit('buffalo-table')">📝 Edit Records</button>
+            <table id="buffalo-table">
+                <thead><tr><th>नाम</th><th>नस्ल</th><th>दूध (Daily)</th><th>ब्यात</th></tr></thead>
+                <tbody>
+                    <tr><td>रानी</td><td>मुर्रा</td><td>18L</td><td>तीसरी</td></tr>
+                    <tr><td>काली</td><td>जाफराबादी</td><td>20L</td><td>चौथी</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="feed-charts" class="data-section">
+            <h2 style="text-align:center;">🌾 चारे का चार्ट</h2>
+            <button class="edit-btn" onclick="toggleEdit('feed-table')">📝 Edit Data</button>
+            <table id="feed-table">
+                <thead><tr><th>आहार</th><th>मात्रा</th><th>फायदा</th></tr></thead>
+                <tbody>
+                    <tr><td>खली</td><td>5kg</td><td>दूध वृद्धि</td></tr>
+                    <tr><td>हरा चारा</td><td>15kg</td><td>सेहत</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
-</div>
 
-<div class="footer">
-    <div style="font-weight: 800; color: var(--primary-dark); font-size: 1.3rem;">शंभू सिंह | 9682386150</div>
-    <div style="color: #666; margin-bottom: 25px;">दिल्ली कैंट (Delhi Cantt)</div>
-    <div class="social-icons">
-        <a href="#" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
-        <a href="#" style="color: #FF0000;"><i class="fab fa-youtube"></i></a>
-        <a href="https://wa.me/919682386150" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
-        <a href="tel:9682386150" style="color: #007bff;"><i class="fas fa-phone-alt"></i></a>
+    <div class="footer">
+        <div style="font-weight: 800; font-size: 1.8rem; margin-bottom: 20px;">शंभू सिंह | 9682386150</div>
+        <div class="social-icons">
+            <a href="https://instagram.com" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:shambhu@gmail.com" style="color: #EA4335;"><i class="fas fa-envelope"></i></a>
+            <a href="http://googleusercontent.com/maps.google.com/4" style="color: #4285F4;"><i class="fas fa-map-marker-alt"></i></a>
+            <a href="https://wa.me/919682386150" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+            <a href="tel:9682386150" style="color: #007bff;"><i class="fas fa-phone-alt"></i></a>
+        </div>
     </div>
-</div>
 
-<script>
-    let sIdx = 0;
-    function runSlider() {
-        let s = document.getElementsByClassName("slides");
-        for(let i=0; i<s.length; i++) s[i].style.display = "none";
-        sIdx++; if(sIdx > s.length) sIdx = 1;
-        s[sIdx-1].style.display = "block";
-        setTimeout(runSlider, 3000);
-    }
-    runSlider();
-</script>
+    <script>
+        function toggleEdit(id) {
+            let t = document.getElementById(id);
+            let editing = t.getAttribute('contenteditable') === 'true';
+            t.setAttribute('contenteditable', !editing);
+            t.classList.toggle('editing-active');
+            if(!editing) alert("एडिट मोड चालू!"); else alert("डेटा सुरक्षित!");
+        }
+
+        function sendOrder(p) {
+            let d = new Date().toLocaleDateString('hi-IN');
+            let m = `नमस्ते शंभू सिंह जी! क्या आज की तारीख (${d}) में 10 किलो *${p}* मिल जाएगा? मुझे ऑर्डर करना है।`;
+            window.open(`https://wa.me/919682386150?text=${encodeURIComponent(m)}`, '_blank');
+        }
+
+        function switchTab(e, id) {
+            let s = document.getElementsByClassName("data-section");
+            for (let i = 0; i < s.length; i++) s[i].classList.remove("active");
+            let n = document.getElementsByClassName("nav-item");
+            for (let i = 0; i < n.length; i++) n[i].classList.remove("active");
+            document.getElementById(id).classList.add("active");
+            e.currentTarget.classList.add("active");
+        }
+
+        let sIdx = 0;
+        function runSlider() {
+            let slides = document.getElementsByClassName("slides");
+            for(let i=0; i<slides.length; i++) slides[i].style.display = "none";
+            sIdx++; if(sIdx > slides.length) sIdx = 1;
+            if(slides.length > 0) slides[sIdx-1].style.display = "block";
+            setTimeout(runSlider, 3000);
+        }
+        window.onload = runSlider;
+        function playCowSound() { document.getElementById("cowMoo").play(); }
+    </script>
 </body>
 </html>
